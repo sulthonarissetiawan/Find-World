@@ -13,22 +13,18 @@ bool searchWord(const vector<vector<char>>& matrix, const string& word, int row,
     int rows = matrix.size();
     int cols = matrix[0].size();
 
-    // Base case: reached end of word or out of bounds
     if (word.empty() || !isValidCell(rows, cols, row, col)) {
         return false;
     }
 
-    // Check if current character matches
     if (tolower(matrix[row][col]) != tolower(word[0])) {
         return false;
     }
 
-    // Reached the end of the word
     if (word.length() == 1) {
         return true;
     }
 
-    // Recursive search in the given direction
     return searchWord(matrix, word.substr(1), row + dr, col + dc, dr, dc);
 }
 
@@ -36,14 +32,12 @@ bool searchMatrix(const vector<vector<char>>& matrix, const string& word) {
     int rows = matrix.size();
     int cols = matrix[0].size();
 
-    // Search in all 8 directions (including diagonals)
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col) {
-            // Check all directions: up, down, left, right, diagonals
             for (int dr = -1; dr <= 1; ++dr) {
                 for (int dc = -1; dc <= 1; ++dc) {
                     if (dr == 0 && dc == 0) {
-                        continue; // Skip the current cell
+                        continue;
                     }
                     if (searchWord(matrix, word, row, col, dr, dc)) {
                         return true;
@@ -65,7 +59,6 @@ int main() {
         cin >> words[i];
     }
 
-    // Sample matrix (replace with your actual matrix)
     vector<vector<char>> matrix = {
         {'A', 'A', 'F', 'L', 'K', 'H', 'P', 'F', 'S', 'S', 'U', 'F', 'I', 'C', 'I', 'C', 'L', 'E', 'S', 'G', 'N', 'N', 'H'},
 		{'S', 'F', 'V', 'R', 'E', 'O', 'M', 'R', 'W', 'L', 'R', 'T', 'T', 'S', 'X', 'O', 'Q', 'Q', 'N', 'A', 'O', 'A', 'O'},
