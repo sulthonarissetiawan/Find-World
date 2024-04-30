@@ -1,7 +1,10 @@
+
 #include <iostream>
 #include <vector>
 #include <string>
 #include <cctype>
+
+
 
 using namespace std;
 
@@ -31,6 +34,7 @@ bool searchWord(const vector<vector<char>>& matrix, const string& word, int row,
 bool searchMatrix(const vector<vector<char>>& matrix, const string& word) {
     int rows = matrix.size();
     int cols = matrix[0].size();
+	
 
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col) {
@@ -50,7 +54,9 @@ bool searchMatrix(const vector<vector<char>>& matrix, const string& word) {
     return false;
 }
 
+
 int main() {
+    
     int numWords;
     cin >> numWords;
 
